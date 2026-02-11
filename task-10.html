@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 10</title>
+</head>
+<body>
+    <script>
+        // --- 1. Variable Declaration ---
+        const userName = "Mohamed Jubair";
+        const age = 20;
+
+        let tamil = 89;
+        let english = 90;
+        let maths = 99;
+        let science = 96;
+        let socialScience = 95;
+
+        // --- 2. Calculations (Math) ---
+        let totalMarks = tamil + english + maths + science + socialScience;
+        let averageMarks = Math.round(totalMarks / 5);
+
+        // --- 3. String Processing ---
+        let upperName = userName.toUpperCase();
+        let nameLength = userName.length;
+
+        // --- 4. Final Formatted Output ---
+        // Using backticks to create a clean, multi-line dashboard
+        const summaryReport = `
+======= STUDENT UTILITY REPORT ========
+Name in Uppercase : ${upperName}
+Name Length       : ${nameLength} characters
+User Age          : ${age} years old
+---------------------------------------
+Total Marks       : ${totalMarks} / 500
+Average Marks     : ${averageMarks}%
+========================================
+        `;
+
+        // 5. Log the final output
+        console.log(summaryReport);
+    </script>
+</body>
+</html>

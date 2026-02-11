@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 9 - Email Analyzer</title>
+</head>
+<body>
+    <script>
+        // 1. Variable to store the email address
+        let emailId = "jubair18@gmail.com";
+
+        // 2. Extract parts using split
+        // .split("@") creates an array: ["jubair1818", "gmail.com"]
+        let emailParts = emailId.split("@");
+
+        // 3. Store username and domain in separate variables
+        let userName = emailParts[0];
+        let domain = emailParts[1];
+
+        // 4. Log the results with clear labels
+        console.log("Full Email: " + emailId);
+        console.log("Username Part: " + userName);
+        console.log("Domain Part: " + domain);
+    </script>
+</body>
+</html>

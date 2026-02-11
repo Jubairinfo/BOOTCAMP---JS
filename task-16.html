@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 6</title>
+</head>
+<body>
+    <script>
+        // 1. Declaration
+        var a = 4;
+        let b = 7;
+        const c = 6;
+
+        // 2. Reassignment
+        a = 5; // Success: var can be reassigned.
+        b = 8; // Success: let can be reassigned.
+        
+        // 3. Redeclaration
+        var a = 10; // Success: var allows redeclaration.
+        // let  b = 20; // ERROR: let does NOT allow redeclaration in the same scope.
+        // const c = 30; // ERROR: const does NOT allow redeclaration.
+
+        // 4. Logging and explaining behavior
+        console.log("var a:", a); // Result: 10 (Works and allows redeclaring)
+        console.log("let b:", b); // Result: 8 (Works for reassigning, but not redeclaring)
+
+        
+
+        /* OBSERVED BEHAVIOR:
+           - 'var' is function-scoped and very flexible (reassign/redeclaring works).
+           - 'let' is block-scoped; it allows reassigning values but prevents redeclaring the variable.
+           - 'const' is block-scoped and strictly constant; once set, the value cannot change.
+        */
+    </script>
+</body>
+</html>

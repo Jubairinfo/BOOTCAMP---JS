@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 8</title>
+</head>
+<body>
+    <script>
+        // 1. Subject marks variables
+        let tamil = 89;
+        let english = 90;
+        let maths = 99;
+        let science = 96;
+        let socialScience = 95;
+
+        // 2. Calculate Total
+        let totalMarks = tamil + english + maths + science + socialScience;
+
+        // 3. Calculate Average
+        // .toFixed(2) to show two decimal places if needed
+        let averageMarks = (totalMarks / 5).toFixed(2);
+
+        // 4. Display results using Template Literals
+        // Note: Backticks allow us to write on multiple lines easily
+        const reportCard = `
+--- Student Progress Report ---
+Total Marks   : ${totalMarks} / 500
+Average Marks : ${averageMarks}%
+-------------------------------
+        `;
+
+       
+        console.log(reportCard);
+    </script>
+</body>
+</html>
