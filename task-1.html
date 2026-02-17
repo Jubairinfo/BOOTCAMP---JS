@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 1</title>
+</head>
+<body>
+
+    <button onclick="validateLogin('Admin','Admin729')">Admin</button><br>
+    <button onclick="validateLogin('user','user729')">User</button><br>
+    <button onclick="validateLogin('guest','guest729')">Guest</button><br>
+
+    <p id="result"></p>
+
+    <script>
+        function validateLogin(username, password) {
+            let message = "";
+
+            if (username === "Admin" && password === "Admin729") {
+                message = "Full access granted";
+            
+                
+            } 
+            else if (username === "user" && password === "user729") {
+                message = "Limited access granted";
+        
+            } 
+            else if (username === "guest" && password === "guest729") {
+                message = "Read-only access";
+                 
+            } 
+            else {
+                message = "Invalid credentials";
+                
+            }
+               console.log(message);
+            document.getElementById("result").innerText = message;
+        }
+    </script>
+
+</body>
+</html>

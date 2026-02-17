@@ -2,25 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task 5: Template Literals</title>
+    <title>Task 15</title>
 </head>
 <body>
-    <script>
-        // 1. Create variables
-        let personName = "Jubair";
-        let role = "System Design Engineer";
-        let companyName = "CODEM";
 
-        // 2. Use template literals to generate a formatted introduction message
-        // back tick in multiple lines 
-        let introduction = `Hello everyone! 
-My name is ${personName}. 
-I am working as a ${role} 
-at ${companyName}.`;
+<button onclick="checkPaymentStatus(4000, true, 'upi')">Paid</button>
+<button onclick="checkPaymentStatus(0, true, 'upi')">Invalid Amount</button>
+<button onclick="checkPaymentStatus(4000, false, 'upi')">Not Paid</button>
+<button onclick="checkPaymentStatus(4000, true, 'cash')">Wrong Method</button>
 
-        // 3. Display the message
-        console.log(introduction);
-    </script>
+<script>
+function checkPaymentStatus(amount, isPaid, paymentMethod){
+    try{
+        if(amount <= 0){
+            alert("Invalid payment amount\nAmount: " + amount + "\nMethod: " + paymentMethod);
+        }
+        else if(isPaid === false){
+            alert("Payment Pending\nAmount: " + amount + "\nMethod: " + paymentMethod);
+        }
+        else if(paymentMethod === "upi" || paymentMethod === "card"){
+            alert("Payment Successful\nAmount: " + amount + "\nMethod: " + paymentMethod);
+        }
+        else{
+            alert("Invalid payment method\nAmount: " + amount + "\nMethod: " + paymentMethod);
+        }
+    }
+    catch(e){
+        console.log(e.message);
+    }
+}
+</script>
+
 </body>
 </html>

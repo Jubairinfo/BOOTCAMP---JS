@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 2</title>
+</head>
+<body>
+
+  <button onclick="checkTicket(30, false)">Adult</button>
+  <button onclick="checkTicket(16, true)">Teen(with permission)</button>
+   <button onclick="checkTicket(16, false)">Teen(without permission)</button>
+  <button onclick="checkTicket(8, false)">Child</button>
+
+  <p id="result"></p>
+
+  <script>
+    function checkTicket(age, hasPermission) {
+      let message = "";
+
+      if (age >= 13 && age <= 17) {
+        if (hasPermission === true) {
+          message = "Allowed";
+        } else {
+          message = "Not Allowed";
+        }
+      } else {
+        message = "Allowed";
+      }
+
+      document.getElementById("result").innerText = message;
+      console.log(message);
+    }
+  </script>
+
+</body>
+</html>

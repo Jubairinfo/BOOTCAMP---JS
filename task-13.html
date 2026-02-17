@@ -2,24 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task 3</title>
+    <title>Task 13</title>
 </head>
 <body>
-    <script>
-        // 1. Create variables for Principal, Rate, and Time
-        let principal = 2000;
-        let rate = 3;
-        let timePeriod = 4;
 
-        // 2. Calculate simple interest using the formula
-        // Formula: (P * R * T) / 100
-        let simpleInterest = (principal * rate * timePeriod) / 100;
+<button onclick="checkAppointment(false, true)">Date Not Available</button>
+<button onclick="checkAppointment(true, false)">User Not Confirmed</button>
+<button onclick="checkAppointment(true, true)">Confirmed</button>
 
-        // 3. Display the final result in a sentence format
-        console.log(`The simple interest for a principal amount of ${principal} at a rate of ${rate}% for ${timePeriod} years is ${simpleInterest}.`);
-        let totalAmout= principal + simpleInterest;
-        console.log(`Total Amount ${totalAmout}`);
-    </script>
+<script>
+function checkAppointment(dateAvailable, userConfirmed){
+
+    if(dateAvailable === false){
+        alert("Appointment Rejected");
+    }
+    else if(userConfirmed === false){
+        alert("Appointment Rejected");
+    }
+    else{
+        alert("Appointment Confirmed");
+    }
+}
+</script>
+
 </body>
 </html>

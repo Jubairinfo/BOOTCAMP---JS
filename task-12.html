@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task 2</title>
+  <meta charset="UTF-8">
+  <title>Task 12</title>
 </head>
-
 <body>
-    <script>
-        // 1. Create two numeric variables
-        let num1 = 15;
-        let num2 = 3;
 
-        // 2. Perform operations and store them in separate variables
-        let addition = num1 + num2;
-        let subtraction = num1 - num2;
-        let multiplication = num1 * num2;
-        let division = num1 / num2;
-        let modulus = num1 % num2;
-        let power = num1 ** 2; 
+  <button onclick="passCheck('21')">Password Weak</button>
+  <button onclick="passCheck('243564752')">Password Medium</button>
+  <button onclick="passCheck('PassWord@1')">Password Strong</button>
 
-        // 3. Log each result with a meaningful description
-        console.log(`Addition (15 + 3): ${addition}`);
-        console.log(`Subtraction (15 - 3): ${subtraction}`);
-        console.log(`Multiplication (15 * 3): ${multiplication}`);
-        console.log(`Division (15 / 3): ${division}`);
-        console.log(`Modulus (Remainder of 15 / 3): ${modulus}`);
-        console.log(`Power (15 squared): ${power}`);
-    </script>
+  <script>
+    function passCheck(password) {
+
+      let strength = 0;
+
+      if (/[a-z]/.test(password)) strength++;
+      if (/[A-Z]/.test(password)) strength++;
+      if (/[0-9]/.test(password)) strength++;
+      if (/[^A-Za-z0-9]/.test(password)) strength++;
+
+      if (password.length >= 8 && strength >= 3) {
+        console.log("Strong");
+      }
+      else if (password.length >= 6) {
+        console.log("Medium");
+      }
+      else {
+        console.log("Weak");
+      }
+    }
+  </script>
+
 </body>
 </html>
-</body>

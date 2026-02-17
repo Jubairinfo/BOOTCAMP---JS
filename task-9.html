@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 9</title>
+</head>
+<body>
+
+  <button onclick="detectIntent('hello')">hello</button>
+  <button onclick="detectIntent('hello?')">question</button>
+  <button onclick="detectIntent('problem')">complaint</button>
+  <button onclick="detectIntent('problem?')">urgent</button>
+  <button onclick="detectIntent('   ')">space</button>
+
+  <script>
+    function detectIntent(message) {
+
+    
+      if (!message || message.trim() === "") {
+        console.log("Invalid");
+        return;
+      }
+
+     
+      let isQuestion = message.includes("?");
+      let isComplaint = message.includes("problem") || message.includes("not working");
+
+      let intent = "";
+
+      // Intent logic
+      if (isQuestion && isComplaint) {
+        intent = "Urgent request";
+      } 
+      else if (isComplaint) {
+        intent = "Complaint";
+      } 
+      else if (isQuestion) {
+        intent = "Question";
+      } 
+      else {
+        intent = "Other";
+      }
+
+      // Log original message and intent
+      console.log("Message:", message);
+      console.log("Intent:", intent);
+    }
+  </script>
+
+</body>
+</html>

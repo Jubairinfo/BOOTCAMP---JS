@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task-7</title>
+</head>
+<body>
+    <button onclick="checkTravelEligibility(20, 'normal', true)">Check Adult Normal</button>
+    <button onclick="checkTravelEligibility(15, 'priority', true)">Check Minor Priority</button>
+
+
+    <script>
+
+        function checkTravelEligibility(age,type,hasId){
+                let baseFare=200;
+            if(age<=0){
+                console.log("invalide age");
+                return;
+            } 
+            let ticketType=check(type)
+         function check(type){
+            if(type!='normal' && type!='priority'){
+               
+                return  null;
+            }
+            return type;
+        }
+            if (age >=18 ){
+                if(hasId){
+                console.log(`Eligible. Ticket Type: ${ticketType}. Fare: ${baseFare}`);
+                }
+                else{
+                   console.log(" Not Eligible");  
+                }
+            }
+            else if(age < 18  || ticketType === 'priority'){
+                baseFare+=50;
+               console.log(`Eligible (Minor/Priority). Fare: ${baseFare}`);
+            }
+            else{
+                console.log("not eligible");
+            }
+        }
+
+
+    </script>
+</body>
+</html>

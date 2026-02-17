@@ -2,33 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task 4: String Processing</title>
+    <title>Task 14</title>
 </head>
 <body>
-    <script>
-        // 1. Create a variable for full name
-        let fullName = "Mohamed Kassali Jubair";
 
-        // 2. Convert to uppercase
-        let nameUpper = fullName.toUpperCase();
+<button onclick="notify('System update available', true)">Important</button>
+<button onclick="notify('Hello user', false)">Normal</button>
+<button onclick="notify('', true)">Empty</button>
 
-        // 3. Convert to lowercase
-        let nameLower = fullName.toLowerCase();
+<script>
+function notify(message, urgency){
 
-        // 4. Find the length of the string
-        let nameLength = fullName.length;
+    if(!message || message.trim() === ""){
+        alert("Invalid notification");
+        return;
+    }
 
-        // 5. Extract the first name
-        // We split by space and take the first part (index 0)
-        let firstName = fullName.split(" ")[0];
+    if(urgency === true){
+        alert("IMPORTANT: " + message);
+    }
+    else{
+        alert("NORMAL: " + message);
+    }
+}
+</script>
 
-        // 6. Log all results with proper labels
-        console.log(`Original Name: ${fullName}`);
-        console.log(`Name in Uppercase: ${nameUpper}`);
-        console.log(`Name in Lowercase: ${nameLower}`);
-        console.log(`Total Length: ${nameLength} characters`);
-        console.log(`First Name extracted: ${firstName}`);
-    </script>
 </body>
 </html>

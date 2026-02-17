@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order & Discount Processor</title>
+</head>
+<body>
+
+    <button onclick="processOrder(800, false, '')">Small Order</button>
+    <button onclick="processOrder(2200, true, 'SAVE10')">Medium Order</button>
+    <button onclick="processOrder(4000, false, 'SAVE10')">Large Order</button>
+
+    <script>
+
+        function processOrder(orderAmount, isMember, couponCode) {
+
+            
+            if (isNaN(orderAmount) || orderAmount <= 0) {
+                console.log("Invalid Order Amount");
+                return;
+            }
+
+            let discountPercent = 0;
+            let couponValid = validateCoupon(couponCode);
+
+            //  Apply discount rules
+            if (orderAmount >= 3000 || isMember) {
+                discountPercent = 20;
+            }
+            else if (orderAmount >= 1500 && couponValid) {
+                discountPercent = 10;
+            }
+            else if (couponCode === "") {
+                discountPercent = 0;
+            }
+            else {
+                discountPercent = 5;
+            }
+
+            //  Calculate discount
+            let discountAmount = orderAmount * (discountPercent / 100);
+            let finalAmount = orderAmount - discountAmount;
+
+            //  Delivery calculation
+            let deliveryStatus;
+            if (finalAmount >= 2000) {
+                deliveryStatus = "Free Delivery";
+            } else {
+                finalAmount += 100;
+                deliveryStatus = "₹100 Delivery Charge Applied";
+            }
+
+            //  Display results
+            console.log("Order Amount: ₹" + orderAmount);
+            console.log("Discount Applied: " + discountPercent + "%   ( - "  + discountPercent  +  ")" );
+            console.log("Final Amount: ₹" + finalAmount);
+            console.log("Delivery Status: " + deliveryStatus);
+            console.log("Coupon Valid: " + couponValid);
+            console.log("-----------------------------");
+        }
+
+        function validateCoupon(couponCode) {
+            if (couponCode === "SAVE10") {
+                return true;
+            }
+            return false;
+        }
+
+    </script>
+
+</body>
+</html>
