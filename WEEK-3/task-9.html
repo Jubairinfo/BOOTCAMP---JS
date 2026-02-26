@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task-9</title>
+</head>
+<body>
+
+    <div id="container">
+        <h2 class="heading">I am inside the container</h2>
+        <p id="mainText">Practice makes a person perfect</p>
+        <p class="nextText">Practice makes a person perfect</p>
+        <button onclick="applyChanges()">Click Here</button>
+    </div>
+
+    <script>
+        function applyChanges() {
+         
+            let selected = document.getElementById("mainText");
+
+     
+            let parentDiv = selected.parentElement;
+            parentDiv.style.backgroundColor = "lightgreen";
+
+      
+            let firstChild = parentDiv.children[0];
+            firstChild.textContent = "Heading Updated Successfully";
+
+         
+            let sibling = selected.nextElementSibling;
+            sibling.style.color = "blue";
+        }
+    </script>
+
+</body>
+</html>

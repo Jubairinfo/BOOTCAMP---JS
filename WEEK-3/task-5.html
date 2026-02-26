@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 5: Object Methods and 'this'</title>
+</head>
+<body>
+    <script>
+      
+        const library = {
+            category: "Science Fiction",
+            totalBooks: 50,
+            isOpen: true,
+
+            
+            restock(count) {
+                console.log(`--- Action: Restocking ${count} books... ---`);
+                
+          
+                this.totalBooks += count; 
+                
+               
+                console.log(`Update successful. New total for ${this.category}: ${this.totalBooks}`);
+            }
+        };
+
+        
+        console.log("Initial State:", library.totalBooks);
+        
+        library.restock(25);
+
+      
+        console.log("Final Object State:", library);
+    </script>
+</body>
+</html>

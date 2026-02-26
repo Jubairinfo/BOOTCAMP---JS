@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 6: DOM Manipulation</title>
+</head>
+<body>
+
+    <h1 id="main-title">Original Title</h1>
+    
+    <p class="content-box">Description One</p>
+    <p class="content-box">Description Two</p>
+    
+    <div class="footer-note">Footer Information</div>
+
+    <script>
+    
+        const mainTitle = document.getElementById('main-title');
+        mainTitle.textContent = "Title Updated via ID"; 
+        mainTitle.style.color = "navy"; 
+        mainTitle.style.fontSize = "40px";
+
+     
+        const boxes = document.getElementsByClassName('content-box');
+        
+      
+        for (let i = 0; i < boxes.length; i++) {
+            boxes[i].textContent = `Box ${i + 1} updated via ClassName`;
+            boxes[i].style.backgroundColor = "lightgray";
+            boxes[i].style.padding = "15px";
+            boxes[i].style.margin = "10px 0";
+        }
+
+        const footer = document.querySelector(".footer-note");
+        footer.textContent = "Footer updated via QuerySelector";
+        footer.style.fontStyle = "italic";
+        footer.style.borderTop = "2px solid black";
+
+    </script>
+</body>
+</html>

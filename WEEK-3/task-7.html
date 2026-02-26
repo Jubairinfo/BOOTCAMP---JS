@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 7 - Toggle Class</title>
+
+  <style>
+    .card {
+      padding: 15px;
+      margin: 10px;
+      border: 2px solid #555;
+      width: 200px;
+    }
+
+    /* Class to toggle */
+    .highlight {
+      background-color: #222;
+      color: white;
+      border-color: black;
+    }
+  </style>
+</head>
+<body>
+
+  <button id="btn">Toggle Highlight</button>
+
+  <div class="card">Card 1</div>
+  <div class="card">Card 2</div>
+  <div class="card">Card 3</div>
+
+  <script>
+    const btn = document.getElementById("btn");
+    const cards = document.querySelectorAll(".card");
+
+    btn.addEventListener("click", function () {
+      for (let i = 0; i < cards.length; i++) {
+        cards[i].classList.toggle("highlight");
+      }
+    });
+  </script>
+
+</body>
+</html>

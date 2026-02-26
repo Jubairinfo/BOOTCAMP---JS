@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 4: Student Marks Tracker</title>
+</head>
+<body>
+
+    <script>
+       
+        const studentMarks = {
+            Mohamed: 80,
+            Jubair: 79,
+            Raja: 23,
+            Ananya: 95
+        };
+
+        const PASS_THRESHOLD = 35;
+
+        console.log("--- Academic Performance Report ---");
+
+        for (let studentName in studentMarks) {
+         
+            let mark = studentMarks[studentName];
+          
+            let status = (mark >= PASS_THRESHOLD) ? "Pass" : "Fail";
+
+            console.log(`Student: ${studentName.padEnd(8)}  Mark: ${mark}  Status: ${status}`);
+        }
+
+  
+        console.log("\nSource Data:", studentMarks);
+    </script>
+    
+</body>
+</html>

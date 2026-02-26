@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task-10</title>
+
+    <style>
+        .highlight {
+            border: 2px solid green;
+            background-color: #eaffea;
+        }
+    </style>
+</head>
+<body>
+
+    <input type="text" id="textBox" placeholder="Click checkbox to change me">
+
+    <label>
+        <input type="checkbox" onclick="toggleAttribute()"> Toggle Attribute
+    </label>
+
+    <script>
+        function toggleAttribute() {
+            let element = document.getElementById("textBox");
+
+            if (element.hasAttribute("class")) {
+                element.removeAttribute("class");
+                element.removeAttribute("placeholder");
+                console.log("Attributes removed");
+            } else {
+                element.setAttribute("class", "highlight");
+                element.setAttribute("placeholder", "Attribute Added!");
+                console.log("Attributes added");
+            }
+        }
+    </script>
+
+</body>
+</html>

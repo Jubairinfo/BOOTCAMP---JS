@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task 13 - Real-Time Validation</title>
+
+  <style>
+    .invalid {
+      border: 2px solid red;
+      outline: none;
+    }
+
+    .valid {
+      border: 2px solid green;
+      outline: none;
+    }
+
+    input {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <form>
+    <label>Username:</label>
+    <input type="text" class="formDetails" placeholder="Enter name" />
+    <span class="error-message"></span>
+
+    <label>Email:</label>
+    <input type="email" class="formDetails" placeholder="Enter email" />
+    <span class="error-message"></span>
+
+    <label>Password:</label>
+    <input type="password" class="formDetails" placeholder="Enter password" />
+    <span class="error-message"></span>
+  </form>
+
+  <script>
+    const inputs = document.querySelectorAll(".formDetails");
+
+   
+    inputs.forEach(input => {
+      input.addEventListener("input", validateInput);
+    });
+
+    function validateInput(event) {
+      const input = event.target;
+      const errorSpan = input.nextElementSibling;
+
+      if (input.value.trim() === "") {
+        errorSpan.textContent = "This field is required";
+        input.classList.add("invalid");
+        input.classList.remove("valid");
+      } else {
+        errorSpan.textContent = "";
+        input.classList.remove("invalid");
+        input.classList.add("valid");
+      }
+    }
+  </script>
+
+</body>
+</html>

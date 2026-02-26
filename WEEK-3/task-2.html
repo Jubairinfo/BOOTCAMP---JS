@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 2 - Function Modifying an Object</title>
+</head>
+<body>
+
+<script>
+ 
+  const product = {
+    name: "Apple",
+    price: 60,
+    weight: 1,
+    quality: "Good"
+  };
+
+
+  function updateProductDetails(productObj) {
+
+    productObj.name = "Orange";
+    productObj.price = 70;
+    productObj.weight = 2;
+    productObj.quality = "Premium";
+
+    return `
+--- Product Update Summary ---
+Name: ${productObj.name}
+Price: ₹${productObj.price}
+Weight: ${productObj.weight} kg
+Quality: ${productObj.quality}
+`;
+  }
+
+
+  const updatedSummary = updateProductDetails(product);
+
+  console.log(updatedSummary);
+
+ 
+  console.log("Updated Original Object:", product);
+</script>
+
+</body>
+</html>

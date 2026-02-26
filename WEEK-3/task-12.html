@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task 12 - Form Validation</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f4f7;
+      padding: 40px;
+    }
+
+    form {
+      width: 320px;
+      margin: auto;
+      background-color: #ffffff;
+      padding: 20px 25px;
+      border-radius: 6px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-top: 12px;
+      font-weight: 600;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 12px;
+    }
+
+    button {
+      margin-top: 15px;
+      width: 100%;
+      padding: 10px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .valid {
+      border: 2px solid green;
+    }
+
+    .invalid {
+      border: 2px solid red;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="userForm">
+    <h2>Registration Form</h2>
+
+    <label>Username</label>
+    <input type="text" class="form-input" placeholder="Enter name" />
+    <span class="error-message"></span>
+
+    <label>Email</label>
+    <input type="email" class="form-input" placeholder="Enter email" />
+    <span class="error-message"></span>
+
+    <label>Password</label>
+    <input type="password" class="form-input" placeholder="Enter password" />
+    <span class="error-message"></span>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    const form = document.getElementById("userForm");
+    const inputs = document.querySelectorAll(".form-input");
+
+    form.addEventListener("submit", validateForm);
+
+    function validateForm(event) {
+      event.preventDefault();
+
+      let isFormValid = true;
+
+      inputs.forEach(input => {
+        const errorSpan = input.nextElementSibling;
+
+        if (input.value.trim() === "") {
+          errorSpan.textContent = "This field is required";
+          input.classList.add("invalid");
+          input.classList.remove("valid");
+          isFormValid = false;
+        } else {
+          errorSpan.textContent = "";
+          input.classList.add("valid");
+          input.classList.remove("invalid");
+        }
+      });
+
+      if (isFormValid) {
+        alert("Form submitted successfully!");
+      } else {
+        alert("Please fill in all required fields.");
+      }
+    }
+  </script>
+
+</body>
+</html>

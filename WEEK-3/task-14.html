@@ -1,0 +1,82 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task-14 - Keyboard Events Interaction</title>
+
+    <style>
+        .hight {
+            color: red;
+            font-size: medium;
+            background-color: aquamarine;
+            display: inline;
+            padding: 5px;
+        }
+
+        .upclick {
+            color: blue;
+            font-size: medium;
+            background-color: brown;
+           display: inline;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<button id="click-btn">Click Me!</button>
+<p id="result"></p>
+
+<script>
+
+let clickable = document.getElementById("click-btn");
+let pressable = document.getElementById("result");
+
+clickable.addEventListener("click", () => {
+    pressable.innerHTML = "Button Clicked!";
+    pressable.className = ""; 
+});
+
+
+document.addEventListener("keydown", (event) => {
+
+ 
+    pressable.classList.remove("hight", "upclick");
+
+    if (event.key === "a" || event.key === "A") {
+        pressable.innerHTML = "You pressed A";
+        pressable.classList.add("hight");
+    }
+    else if (event.key === "b" || event.key === "B") {
+        pressable.innerHTML = "You pressed B";
+        pressable.classList.add("hight");
+    }
+    else if (event.key === "Enter") {
+        pressable.innerHTML = "Enter Key Pressed";
+        pressable.classList.add("upclick");
+    }
+    else {
+        pressable.innerHTML = "Key Down: " + event.key;
+    }
+
+});
+
+// KeyUp Event
+document.addEventListener("keyup", (event) => {
+    pressable.innerHTML += " | Key Released: " + event.key;
+});
+
+</script>
+
+
+     
+
+
+
+
+
+
+</body>
+</html>

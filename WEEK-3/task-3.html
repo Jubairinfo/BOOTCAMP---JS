@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 3: Shopping Cart Logic</title>
+</head>
+<body>
+    <script>
+
+        const cart = {
+            items: [
+                { name: "Apple", price: 60, quantity: 2 },
+                { name: "Orange", price: 40, quantity: 3 },
+                { name: "Banana", price: 20, quantity: 5 }
+            ],
+
+            calculateTotal() {
+                let total = 0;
+               
+                for (const item of this.items) {
+                    total += item.price * item.quantity;
+                }
+                return total;
+            },
+
+           
+            displayCart() {
+                console.log("--- Current Cart Items ---");
+                console.table(this.items);
+            }
+        };
+
+   
+        cart.displayCart();
+        console.log(`Initial Total Price: ₹${cart.calculateTotal()}`);
+
+      
+        console.log("\n--- Updating Cart Values ---");
+        cart.items[0].price = 100;  
+        cart.items[1].quantity = 5;  
+        
+        cart.displayCart();
+        console.log(`Updated Total Price: ₹${cart.calculateTotal()}`);
+
+    </script>
+</body>
+</html>

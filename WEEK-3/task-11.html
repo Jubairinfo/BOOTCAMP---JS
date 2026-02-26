@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task 11 - Event Object with Multiple Buttons</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      padding: 40px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .button-group {
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #4caf50;
+      color: white;
+    }
+
+    .btn:hover {
+      background-color: #45a049;
+    }
+
+    #output {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      display: inline-block;
+      min-width: 250px;
+    }
+  </style>
+</head>
+<body>
+
+
+  <div class="button-group">
+    <button class="btn">Pizza</button>
+    <button class="btn">Tacos</button>
+    <button class="btn">Sushi</button>
+  </div>
+
+  <div id="output">
+    <p>Click any button to see event details.</p>
+  </div>
+
+  <script>
+  
+    const buttons = document.querySelectorAll(".btn");
+    const output = document.getElementById("output");
+
+    
+    function handleButtonClick(event) {
+      const clickedButtonText = event.target.textContent;
+      const eventType = event.type;
+
+      output.innerHTML = `
+        <p><strong>Clicked Button:</strong> ${clickedButtonText}</p>
+        <p><strong>Event Type:</strong> ${eventType}</p>
+      `;
+    }
+
+    
+    buttons.forEach(button => {
+      button.addEventListener("click", handleButtonClick);
+    });
+  </script>
+
+</body>
+</html>

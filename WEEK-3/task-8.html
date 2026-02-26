@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task-8</title>
+</head>
+<body>
+
+    <div class="select"></div>
+
+    <script>
+        function createElement() {
+            
+            const array = [
+                { name: "Arun", profession: "Software Engineer" },
+                { name: "Priya", profession: "Graphic Designer" },
+                { name: "Rahul", profession: "Data Analyst" }
+            ];
+
+         
+            const container = document.querySelector(".select");
+
+            const ul = document.createElement("ul");
+
+           
+            array.forEach(item => {
+               
+                const li = document.createElement("li");
+
+                li.textContent = `${item.name} - ${item.profession}`;
+
+                ul.appendChild(li);
+            });
+
+            
+            container.appendChild(ul);
+        }
+
+        createElement();
+    </script>
+
+</body>
+</html>
