@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Password Rule Checker</title>
+</head>
+<body>
+
+  <h2>Password Rule Checker</h2>
+
+  <input type="password" id="passwordInput" placeholder="Enter password">
+
+  <ul id="rulesList"></ul>
+
+  <script>
+    // 1. Rules array with objects
+    let rules = [
+      { rule: "Minimum 8 characters", isPassed: false },
+      { rule: "At least one uppercase letter", isPassed: false },
+      { rule: "At least one number", isPassed: false },
+      { rule: "At least one special character", isPassed: false }
+    ];
+
+    let input = document.getElementById("passwordInput");
+    let rulesList = document.getElementById("rulesList");
+
+    // 2. Function to check password
+    function checkPassword(password) {
+
+      // Reset failed rules array
+      let failedRules = [];
+
+      // Rule 1: minimum 8 characters
+      rules[0].isPassed = password.length >= 8;
+
+      // Rule 2: at least one uppercase letter
+      rules[1].isPassed = /[A-Z]/.test(password);
+
+      // Rule 3: at least one number
+      rules[2].isPassed = /[0-9]/.test(password);
+
+      // Rule 4: at least one special character
+      rules[3].isPassed = /[^A-Za-z0-9]/.test(password);
+
+      // Store failed rules
+      for (let i = 0; i < rules.length; i++) {
+        if (rules[i].isPassed === false) {
+          failedRules.push(rules[i].rule);
+        }
+      }
+
+      displayRules(failedRules);
+    }
+
+    // 3. Display passed and failed rules
+    function displayRules(failedRules) {
+      rulesList.innerHTML = "";
+
+      for (let i = 0; i < rules.length; i++) {
+        let li = document.createElement("li");
+
+        if (rules[i].isPassed) {
+          li.textContent = "✔ " + rules[i].rule;
+          li.style.color = "green";
+        } else {
+          li.textContent = "✘ " + rules[i].rule;
+          li.style.color = "red";
+        }
+
+        rulesList.appendChild(li);
+      }
+
+      console.log("Failed Rules:", failedRules);
+    }
+
+    // 4. Event listener (live typing)
+    input.addEventListener("input", function() {
+      checkPassword(input.value);
+    });
+
+  </script>
+
+</body>
+</html>

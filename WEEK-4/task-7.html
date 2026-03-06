@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 7 – Dynamic Form Builder</title>
+  <style>
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    button {
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Dynamic Form</h2>
+
+  <form id="formContainer"></form>
+
+  <script>
+    /* 1. Fields array */
+    let fieldConfig = [
+      { type: "text", label: "Name" },
+      { type: "email", label: "Email" },
+      { type: "number", label: "Age" }
+    ];
+
+    let formContainer = document.getElementById("formContainer");
+
+    /* a) Loop through fields array */
+    for (let i = 0; i < fieldConfig.length; i++) {
+      /* b) Create label */
+      let labelElement = document.createElement("label");
+      labelElement.textContent = fieldConfig[i].label;
+
+      /* c) Create input field */
+      let inputElement = document.createElement("input");
+      inputElement.type = fieldConfig[i].type;
+      inputElement.name = fieldConfig[i].label.toLowerCase();
+
+      formContainer.appendChild(labelElement);
+      formContainer.appendChild(inputElement);
+    }
+
+    /* Submit button */
+    let submitBtn = document.createElement("button");
+    submitBtn.textContent = "Submit";
+    submitBtn.type = "submit";
+    formContainer.appendChild(submitBtn);
+
+    /* 2. On form submission */
+    formContainer.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      let inputElements = formContainer.querySelectorAll("input");
+      let collectedData = [];
+
+      /* d) Read all values */
+      for (let i = 0; i < inputElements.length; i++) {
+        collectedData.push(inputElements[i].value);
+      }
+
+      /* e & f) Store and show data */
+      console.log(collectedData);
+      alert("Stored Data: " + collectedData.join(", "));
+    });
+  </script>
+
+</body>
+</html>

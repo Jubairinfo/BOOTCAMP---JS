@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 1 – Dynamic Scoreboard</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .playerBox {
+      margin: 6px 0;
+      padding: 8px;
+      border: 1px solid #333;
+      width: 250px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Score Board</h2>
+
+<input type="number" placeholder="Enter the score" id="scoreInput">
+<button onclick="addScore()">SUBMIT</button>
+
+<div id="scoreContainer"></div>
+<p id="resultText"></p>
+
+<script>
+  /* 1. Scores array */
+  let scoreList = [];
+
+  let scoreContainer = document.getElementById("scoreContainer");
+  let resultText = document.getElementById("resultText");
+
+  function addScore() {
+    let inputValue = document.getElementById("scoreInput").value;
+
+    if (inputValue === "") {
+      alert("Please enter a score");
+      return;
+    }
+
+    scoreList.push(Number(inputValue));
+    document.getElementById("scoreInput").value = "";
+    renderScores();
+  }
+
+  /* Render UI */
+  function renderScores() {
+    scoreContainer.innerHTML = "";
+
+    if (scoreList.length === 0) {
+      resultText.innerText = "No scores yet";
+      return;
+    }
+
+    /* 2 & 3: Display scores with labels */
+    for (let i = 0; i < scoreList.length; i++) {
+      let playerDiv = document.createElement("div");
+      playerDiv.className = "playerBox";
+
+      playerDiv.innerHTML = `
+        Player ${i + 1}: ${scoreList[i]}
+        <button onclick="increaseScore(${i})">+</button>
+        <button onclick="decreaseScore(${i})">-</button>
+      `;
+
+      scoreContainer.appendChild(playerDiv);
+    }
+
+    /* 8. Highest and Lowest score */
+    let highestScore = Math.max(...scoreList);
+    let lowestScore = Math.min(...scoreList);
+
+    resultText.innerHTML = `
+      Highest Score: ${highestScore} <br>
+      Lowest Score: ${lowestScore}
+    `;
+  }
+
+  /* 5. Increase score */
+  function increaseScore(index) {
+    scoreList[index]++;
+    renderScores();
+  }
+
+  /* 6. Decrease score */
+  function decreaseScore(index) {
+    scoreList[index]--;
+    renderScores();
+  }
+
+  renderScores();
+</script>
+
+</body>
+</html>

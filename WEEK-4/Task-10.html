@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 10</title>
+  <style>
+    .box {
+      border: 2px solid black;
+      padding: 15px;
+      width: 300px;
+      border-radius: 8px;
+    }
+    textarea {
+      width: 100%;
+      height: 80px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Live Character Counter</h2>
+
+  <div class="box" id="uiBox"></div>
+
+  <script>
+    // 1. Empty array
+    let textStore = [];
+
+    const uiBox = document.getElementById("uiBox");
+
+    // Create textarea
+    let msgInput = document.createElement("textarea");
+    msgInput.placeholder = "Write something...";
+    uiBox.appendChild(msgInput);
+
+    // Create info display
+    let charInfo = document.createElement("p");
+    charInfo.textContent = "Characters: 0";
+
+    let longestInfo = document.createElement("p");
+    longestInfo.textContent = "Longest Input: None";
+
+    uiBox.appendChild(charInfo);
+    uiBox.appendChild(longestInfo);
+
+    // Create button
+    let saveBtn = document.createElement("button");
+    saveBtn.textContent = "Save Text";
+    uiBox.appendChild(saveBtn);
+
+    // Live count
+    msgInput.addEventListener("input", function () {
+      let currentValue = msgInput.value;
+
+      // Update characters
+      charInfo.textContent = "Characters: " + currentValue.length;
+
+      // Find longest
+      let longestValue = currentValue;
+      for (let i = 0; i < textStore.length; i++) {
+        if (textStore[i].length > longestValue.length) {
+          longestValue = textStore[i];
+        }
+      }
+
+      longestInfo.textContent = "Longest Input: " + (longestValue || "None");
+    });
+
+    // On save
+    saveBtn.onclick = function () {
+      let entered = msgInput.value.trim();
+
+      if (entered === "") {
+        alert("Type something first!");
+        return;
+      }
+
+      // Store input
+      textStore.push(entered);
+      console.log("Saved Array:", textStore);
+
+      msgInput.value = "";
+      charInfo.textContent = "Characters: 0";
+    };
+  </script>
+
+</body>
+</html>

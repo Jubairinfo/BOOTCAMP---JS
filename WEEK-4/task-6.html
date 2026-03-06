@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 6 – Search + Highlight</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    li {
+      padding: 5px;
+    }
+    .highlight {
+      background-color: yellow;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Live Search</h2>
+
+  <!-- Search input -->
+  <input type="text" id="searchBox" placeholder="Search..." />
+
+  <!-- List display -->
+  <ul id="resultList"></ul>
+
+  <!-- No result message -->
+  <p id="noMatchMsg" style="display:none;">No results found.</p>
+
+  <script>
+    /* 1. Array */
+    let textArray = ["JavaScript", "Java", "Python", "React"];
+
+    let resultList = document.getElementById("resultList");
+    let searchBox = document.getElementById("searchBox");
+    let noMatchMsg = document.getElementById("noMatchMsg");
+
+    /* 2. Display function */
+    function renderList(data, keyword = "") {
+      resultList.innerHTML = "";
+      noMatchMsg.style.display = "none";
+
+      if (data.length === 0) {
+        noMatchMsg.style.display = "block";
+        return;
+      }
+
+      for (let i = 0; i < data.length; i++) {
+        let li = document.createElement("li");
+
+        let regex = new RegExp(keyword, "gi");
+        li.innerHTML = data[i].replace(regex, match => 
+          `<span class="highlight">${match}</span>`
+        );
+
+        resultList.appendChild(li);
+      }
+    }
+
+    renderList(textArray);
+
+    /* 3–6. Live search */
+    searchBox.addEventListener("input", function () {
+      let searchTerm = searchBox.value.toLowerCase();
+      let filteredTexts = [];
+
+      for (let i = 0; i < textArray.length; i++) {
+        if (textArray[i].toLowerCase().includes(searchTerm)) {
+          filteredTexts.push(textArray[i]);
+        }
+      }
+
+      renderList(filteredTexts, searchTerm);
+    });
+  </script>
+
+</body>
+</html>

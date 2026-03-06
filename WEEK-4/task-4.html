@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 4 </title>
+</head>
+<body>
+
+  <h2>Fruit List</h2>
+  <div id="listContainer">
+    <ul id="listElement"></ul>
+  </div>
+
+<script>
+  // Array of items
+  const items = ["Apple", "Banana", "Grapes", "Guava", "Orange", "Apple"];
+  const listElement = document.getElementById("listElement");
+  const listNodes = [];
+
+  // 1. Display items using DOM
+  for (let i = 0; i < items.length; i++) {
+    let li = document.createElement("li");
+    li.innerText = items[i];
+    listElement.appendChild(li);
+    listNodes.push(li);
+  }
+
+  // 2. Find and highlight duplicates
+  for (let i = 0; i < items.length; i++) {
+    for (let j = i + 1; j < items.length; j++) {
+
+      if (items[i] === items[j]) {
+        console.log(items[i] + " is a duplicate");
+
+        // 3. Highlight both duplicate items
+        listNodes[i].style.color = "blue";
+        listNodes[i].style.backgroundColor = "red";
+
+        listNodes[j].style.color = "blue";
+        listNodes[j].style.backgroundColor = "red";
+      }
+
+    }
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 18 – Drag Order Simulator</title>
+</head>
+<body>
+
+<h2>Item Order</h2>
+<ul id="listContainer"></ul>
+
+<script>
+/* 1. Items Array */
+let itemList = ["Item A", "Item B", "Item C", "Item D"];
+let listContainer = document.getElementById("listContainer");
+
+/* Function to render list */
+function renderList() {
+    listContainer.innerHTML = "";
+
+    for (let i = 0; i < itemList.length; i++) {
+
+        let listItem = document.createElement("li");
+        listItem.textContent = itemList[i] + " ";
+
+        let moveUpBtn = document.createElement("button");
+        moveUpBtn.textContent = "Move Up";
+
+        let moveDownBtn = document.createElement("button");
+        moveDownBtn.textContent = "Move Down";
+
+        /* Move Up Logic */
+        moveUpBtn.onclick = function () {
+            if (i > 0) {
+                [itemList[i - 1], itemList[i]] = [itemList[i], itemList[i - 1]];
+                renderList();
+            }
+        };
+
+        /* Move Down Logic */
+        moveDownBtn.onclick = function () {
+            if (i < itemList.length - 1) {
+                [itemList[i], itemList[i + 1]] = [itemList[i + 1], itemList[i]];
+                renderList();
+            }
+        };
+
+        listItem.appendChild(moveUpBtn);
+        listItem.appendChild(moveDownBtn);
+        listContainer.appendChild(listItem);
+    }
+}
+
+/* Initial Render */
+renderList();
+</script>
+
+</body>
+</html>

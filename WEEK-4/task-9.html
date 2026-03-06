@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 9 </title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 50%;
+    }
+    th, td {
+      padding: 8px;
+      text-align: center;
+    }
+    button {
+      margin: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Inventory Manager</h2>
+
+  <table border="1" id="inventoryTable"></table>
+
+  <script>
+    /* 1. Inventory array */
+    let inventoryList = [
+      { product: "Pen", quantity: 10 },
+      { product: "Notebook", quantity: 5 },
+      { product: "Eraser", quantity: 0 }
+    ];
+
+    let inventoryTable = document.getElementById("inventoryTable");
+
+    /* 2. Display table */
+    function renderInventory() {
+      inventoryTable.innerHTML = `
+        <tr>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Actions</th>
+        </tr>
+      `;
+
+      inventoryList.forEach((item, index) => {
+        let row = document.createElement("tr");
+
+        row.innerHTML = `
+          <td>${item.product}</td>
+          <td>${item.quantity}</td>
+          <td>
+            <button onclick="updateQuantity(${index}, 1)">Increase</button>
+            <button onclick="updateQuantity(${index}, -1)">Decrease</button>
+          </td>
+        `;
+
+        inventoryTable.appendChild(row);
+      });
+    }
+
+    /* 3. Change quantity */
+    function updateQuantity(itemIndex, changeValue) {
+      let currentQuantity = inventoryList[itemIndex].quantity;
+
+      /* 5. Prevent quantity below zero */
+      if (changeValue === -1 && currentQuantity <= 0) {
+        alert("Quantity cannot go below zero!");
+        return;
+      }
+
+      inventoryList[itemIndex].quantity += changeValue;
+
+      console.log("Updated Inventory:", inventoryList);
+
+      /* 4. Update UI dynamically */
+      renderInventory();
+    }
+
+    /* Initial render */
+    renderInventory();
+  </script>
+
+</body>
+</html>

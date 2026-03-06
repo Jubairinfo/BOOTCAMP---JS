@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 5 </title>
+</head>
+<body>
+
+  <h2>Page View</h2>
+
+  <ul id="listContainer"></ul>
+
+  <button id="prevBtn">Previous</button>
+  <button id="nextBtn">Next</button>
+
+<script>
+  // 1. Array with 20 items
+  const allItems = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
+
+  const listContainer = document.getElementById("listContainer");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+
+  let currentPageIndex = 1;
+  const pageSize = 5;
+  const totalPages = Math.ceil(allItems.length / pageSize);
+
+  // 2 & 5. Display function
+  function renderPage() {
+    listContainer.innerHTML = "";
+
+    let start = (currentPageIndex - 1) * pageSize;
+    let end = start + pageSize;
+
+    for (let i = start; i < end && i < allItems.length; i++) {
+      let li = document.createElement("li");
+      li.innerText = "Item " + allItems[i];
+      listContainer.appendChild(li);
+    }
+
+    // 6. Disable buttons properly
+    prevBtn.disabled = (currentPageIndex === 1);
+    nextBtn.disabled = (currentPageIndex === totalPages);
+  }
+
+  // 4. Button logic
+  nextBtn.onclick = function() {
+    if (currentPageIndex < totalPages) {
+      currentPageIndex++;
+      renderPage();
+    }
+  };
+
+  prevBtn.onclick = function() {
+    if (currentPageIndex > 1) {
+      currentPageIndex--;
+      renderPage();
+    }
+  };
+
+  // Initial load
+  renderPage();
+</script>
+
+</body>
+</html>

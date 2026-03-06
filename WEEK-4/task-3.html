@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Task 3 – Editable Table</title>
+</head>
+<body>
+
+  <table border="1" id="userTable"></table>
+
+  <script>
+    /* 1. Users array */
+    let userList = [
+      { name: "Babu", age: 90, email: "name@mail.com" },
+      { name: "Raja", age: 68, email: "name@mail.com" }
+    ];
+
+    let userTable = document.getElementById("userTable");
+
+    /* 2. Render table */
+    function renderUserTable() {
+      userTable.innerHTML = `
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Email</th>
+          <th>Action</th>
+        </tr>
+      `;
+
+      for (let i = 0; i < userList.length; i++) {
+        let row = document.createElement("tr");
+
+        row.innerHTML = `
+          <td>${userList[i].name}</td>
+          <td>${userList[i].age}</td>
+          <td>${userList[i].email}</td>
+          <td>
+            <button onclick="editUser(${i})">Edit</button>
+          </td>
+        `;
+
+        userTable.appendChild(row);
+      }
+    }
+
+    /* 5. Edit row */
+    function editUser(index) {
+      let row = userTable.rows[index + 1];
+
+      row.innerHTML = `
+        <td><input type="text" value="${userList[index].name}"></td>
+        <td><input type="number" value="${userList[index].age}"></td>
+        <td>${userList[index].email}</td>
+        <td>
+          <button onclick="saveUser(${index})">Save</button>
+        </td>
+      `;
+    }
+
+    /* 6 & 7. Save edited data */
+    function saveUser(index) {
+      let row = userTable.rows[index + 1];
+      let inputs = row.querySelectorAll("input");
+
+      userList[index].name = inputs[0].value;
+      userList[index].age = Number(inputs[1].value);
+
+      renderUserTable();
+    }
+
+    renderUserTable();
+  </script>
+
+</body>
+</html>

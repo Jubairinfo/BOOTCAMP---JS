@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 16 - Color Pattern Generator</title>
+
+    <style>
+        .gridWrapper {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .gridBox {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Patterned Color Grid</h2>
+<div class="gridWrapper" id="gridWrapper"></div>
+
+<script>
+/* 1. Color Array */
+const colorList = ["red", "blue", "green", "yellow"];
+const gridWrapper = document.getElementById("gridWrapper");
+
+let currentColorIndex = 0;
+
+/* 4. Nested loops for rows and columns */
+for (let row = 0; row < 3; row++) {
+    for (let col = 0; col < 3; col++) {
+
+        /* 2. Create grid boxes using DOM */
+        let gridBox = document.createElement("div");
+        gridBox.classList.add("gridBox");
+
+        /* 3. Repeating color pattern */
+        gridBox.style.backgroundColor =
+            colorList[currentColorIndex % colorList.length];
+
+        /* 5. Display dynamically */
+        gridWrapper.appendChild(gridBox);
+
+        currentColorIndex++;
+    }
+}
+</script>
+
+</body>
+</html>

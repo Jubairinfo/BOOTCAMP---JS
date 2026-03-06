@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 8 – Attendance Tracker</title>
+  <style>
+    button {
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Attendance Tracker</h2>
+  <div id="studentContainer"></div>
+
+  <p id="attendanceSummary"></p>
+
+  <script>
+    /* 1. Students array */
+    let studentList = [
+      { name: "Ram", present: true },
+      { name: "Kumar", present: false }
+    ];
+
+    let studentContainer = document.getElementById("studentContainer");
+    let attendanceSummary = document.getElementById("attendanceSummary");
+
+    function renderStudents() {
+      studentContainer.innerHTML = "";
+
+      let presentTotal = 0;
+      let absentTotal = 0;
+
+      for (let i = 0; i < studentList.length; i++) {
+        let row = document.createElement("div");
+
+        let statusText = studentList[i].present ? "Present" : "Absent";
+
+        if (studentList[i].present) {
+          presentTotal++;
+        } else {
+          absentTotal++;
+        }
+
+        row.textContent = studentList[i].name + " - " + statusText;
+
+        let toggleBtn = document.createElement("button");
+        toggleBtn.textContent = "Toggle";
+
+        toggleBtn.onclick = function () {
+          studentList[i].present = !studentList[i].present;
+          renderStudents();
+        };
+
+        row.appendChild(toggleBtn);
+        studentContainer.appendChild(row);
+      }
+
+      attendanceSummary.textContent =
+        "Present: " + presentTotal + "   Absent: " + absentTotal;
+    }
+
+    renderStudents();
+  </script>
+
+</body>
+</html>

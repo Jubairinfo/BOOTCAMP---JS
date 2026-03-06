@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 17 – Expense Tracker</title>
+</head>
+<body>
+
+<h2>Expense Details</h2>
+<div id="expenseContainer"></div>
+
+<hr>
+
+<h2>Category Summary</h2>
+<div id="summaryContainer"></div>
+
+<script>
+/* 1. Expense Array */
+let expenseList = [
+    { category: "Food", amount: 200 },
+    { category: "Travel", amount: 500 },
+    { category: "Food", amount: 300 }
+];
+
+let expenseContainer = document.getElementById("expenseContainer");
+let summaryContainer = document.getElementById("summaryContainer");
+
+/* 2. Create Table */
+let expenseTable = document.createElement("table");
+expenseTable.border = "1";
+expenseTable.style.width = "300px";
+expenseTable.style.textAlign = "left";
+
+/* Table Header */
+let headerRow = document.createElement("tr");
+headerRow.innerHTML = "<th>Category</th><th>Amount (₹)</th>";
+expenseTable.appendChild(headerRow);
+
+let categoryTotalMap = {};
+let overallTotal = 0;
+
+/* 3. Loop through expenses */
+for (let i = 0; i < expenseList.length; i++) {
+
+    let row = document.createElement("tr");
+
+    let categoryCell = document.createElement("td");
+    categoryCell.textContent = expenseList[i].category;
+
+    let amountCell = document.createElement("td");
+    amountCell.textContent = expenseList[i].amount;
+
+    row.append(categoryCell, amountCell);
+    expenseTable.appendChild(row);
+
+    let currentCategory = expenseList[i].category;
+    let currentAmount = expenseList[i].amount;
+
+    if (!categoryTotalMap[currentCategory]) {
+        categoryTotalMap[currentCategory] = 0;
+    }
+
+    categoryTotalMap[currentCategory] += currentAmount;
+    overallTotal += currentAmount;
+}
+
+/* Display Table */
+expenseContainer.appendChild(expenseTable);
+
+/* 4. Display Category Totals */
+for (let category in categoryTotalMap) {
+    let resultText = document.createElement("p");
+    resultText.style.fontWeight = "bold";
+    resultText.textContent =
+        category + ": ₹" + categoryTotalMap[category];
+    summaryContainer.appendChild(resultText);
+}
+
+/* 5. Display Grand Total */
+let totalText = document.createElement("h3");
+totalText.textContent = "Grand Total: ₹" + overallTotal;
+summaryContainer.appendChild(totalText);
+
+</script>
+</body>
+</html>

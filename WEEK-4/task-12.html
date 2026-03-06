@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 12 - Quiz Engine</title>
+</head>
+<body>
+
+<div id="quizBox"></div>
+
+<script>
+/* 1. Quiz Array */
+const quizData = [
+    {
+        question: "What is JavaScript?",
+        options: ["Language", "Framework", "Database"],
+        answer: "Language"
+    },
+    {
+        question: "Which keyword declares a variable?",
+        options: ["var", "loop", "print"],
+        answer: "var"
+    }
+];
+
+const quizBox = document.getElementById("quizBox");
+
+let userScore = 0;
+let questionIndex = 0;
+
+/* 2. Show Question */
+function showQuestion() {
+    quizBox.innerHTML = "";
+
+    let currentQuestion = quizData[questionIndex];
+
+    let questionTitle = document.createElement("h3");
+    questionTitle.textContent = currentQuestion.question;
+    quizBox.appendChild(questionTitle);
+
+    /* Create option buttons */
+    for (let i = 0; i < currentQuestion.options.length; i++) {
+        let optionButton = document.createElement("button");
+        optionButton.textContent = currentQuestion.options[i];
+        optionButton.style.margin = "5px";
+
+        optionButton.onclick = function () {
+            /* 3 & 4. Check answer and update score */
+            if (currentQuestion.options[i] === currentQuestion.answer) {
+                userScore++;
+            }
+
+            /* 5. Go to next question */
+            questionIndex++;
+
+            if (questionIndex < quizData.length) {
+                showQuestion();
+            } else {
+                showResult();
+            }
+        };
+
+        quizBox.appendChild(optionButton);
+    }
+}
+
+/* 6. Show Final Result */
+function showResult() {
+    quizBox.innerHTML = `
+        <h2>Quiz Finished!</h2>
+        <h3>Your Final Score: ${userScore} / ${quizData.length}</h3>
+        <button onclick="location.reload()">Restart Quiz</button>
+    `;
+}
+
+/* Start Quiz */
+showQuestion();
+</script>
+
+</body>
+</html>

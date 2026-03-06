@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 2 – Multi-Filter Product List</title>
+</head>
+<body>
+
+<h2>Product Filter</h2>
+
+<!-- Filters -->
+<select id="categorySelect">
+  <option value="All">All</option>
+  <option value="Electronics">Electronics</option>
+  <option value="Clothing">Clothing</option>
+</select>
+
+<input type="number" id="minPriceInput" placeholder="Min Price">
+<input type="number" id="maxPriceInput" placeholder="Max Price">
+
+<button onclick="applyFilter()">Filter</button>
+
+<hr>
+
+<div id="productContainer"></div>
+
+<script>
+  /* 1. Products array */
+  let productList = [
+    { name: "Laptop", price: 50000, category: "Electronics" },
+    { name: "IPhone", price: 20000, category: "Electronics" },
+    { name: "Shirt", price: 2000, category: "Clothing" },
+    { name: "Kurthi", price: 2500, category: "Clothing" }
+  ];
+
+  let productContainer = document.getElementById("productContainer");
+
+  /* 2. Display products */
+  function displayProducts(list) {
+    productContainer.innerHTML = "";
+
+    if (list.length === 0) {
+      productContainer.innerText = "No products found";
+      return;
+    }
+
+    for (let i = 0; i < list.length; i++) {
+      let div = document.createElement("div");
+      div.innerText = `Name: ${list[i].name} | Price: ${list[i].price} | Category: ${list[i].category}`;
+      productContainer.appendChild(div);
+    }
+  }
+
+  /* 4. Filter using loops */
+  function applyFilter() {
+    let selectedCategory = document.getElementById("categorySelect").value;
+    let minPrice = document.getElementById("minPriceInput").value;
+    let maxPrice = document.getElementById("maxPriceInput").value;
+
+    let filteredList = [];
+
+    for (let i = 0; i < productList.length; i++) {
+      let product = productList[i];
+
+      let categoryMatch = (selectedCategory === "All" || product.category === selectedCategory);
+      let minMatch = (minPrice === "" || product.price >= Number(minPrice));
+      let maxMatch = (maxPrice === "" || product.price <= Number(maxPrice));
+
+      if (categoryMatch && minMatch && maxMatch) {
+        filteredList.push(product);
+      }
+    }
+
+    displayProducts(filteredList);
+  }
+
+  /* Show all initially */
+  displayProducts(productList);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 11 – Sorting Visualizer</title>
+  <style>
+    .barContainer {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .barItem {
+      width: 40px;
+      background: steelblue;
+      color: white;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Sorting Visualizer (Bubble Sort)</h2>
+<button onclick="startSorting()">Start Sorting</button>
+
+<div id="visualContainer" class="barContainer"></div>
+
+<script>
+  /* 1. Array of numbers */
+  let numberList = [5, 2, 4];
+
+  const visualContainer = document.getElementById("visualContainer");
+
+  /* 2. Display numbers visually */
+  function renderBars() {
+    visualContainer.innerHTML = "";
+
+    numberList.forEach(value => {
+      let bar = document.createElement("div");
+      bar.className = "barItem";
+      bar.style.height = value * 30 + "px";
+      bar.textContent = value;
+      visualContainer.appendChild(bar);
+    });
+  }
+
+  renderBars();
+
+  /* Delay function */
+  function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  /* 3. Bubble sort with visual updates */
+  async function startSorting() {
+    for (let i = 0; i < numberList.length; i++) {
+      for (let j = 0; j < numberList.length - i - 1; j++) {
+
+        if (numberList[j] > numberList[j + 1]) {
+          // swap values
+          let temp = numberList[j];
+          numberList[j] = numberList[j + 1];
+          numberList[j + 1] = temp;
+
+          /* 4 & 5. Update display after every swap */
+          renderBars();
+          await delay(800);
+        }
+      }
+    }
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Summary Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 50%;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 2px solid black;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #333;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Summary Dashboard</h2>
+
+  <table>
+    <tr>
+      <th>Category</th>
+      <th>Value</th>
+    </tr>
+    <tr>
+      <td>Total Users</td>
+      <td id="usersData"></td>
+    </tr>
+    <tr>
+      <td>Total Orders</td>
+      <td id="ordersData"></td>
+    </tr>
+    <tr>
+      <td>Total Revenue</td>
+      <td id="revenueData"></td>
+    </tr>
+  </table>
+
+  <script>
+    let userList = [1, 2, 3, 4];
+    let orderList = [500, 1200, 800];
+    let revenueList = [5000, 3000];
+
+    function updateSummary() {
+      let revenueTotal = 0;
+
+      for (let i = 0; i < revenueList.length; i++) {
+        revenueTotal += revenueList[i];
+      }
+
+      document.getElementById("usersData").innerText = userList.length;
+      document.getElementById("ordersData").innerText = orderList.length;
+      document.getElementById("revenueData").innerText = "₹" + revenueTotal;
+    }
+
+    updateSummary();
+
+    setTimeout(() => {
+      userList.push(5);
+      orderList.push(1000);
+      revenueList.push(2000);
+      updateSummary();
+    }, 3000);
+  </script>
+
+</body>
+</html>

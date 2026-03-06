@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 14 – Price Calculator</title>
+</head>
+<body>
+
+<h2>Price Calculator</h2>
+
+<div id="priceContainer"></div>
+<p id="totalAmount"></p>
+<p id="taxAmount"></p>
+<p id="discountAmount"></p>
+<p id="finalAmount"></p>
+
+<script>
+  // 1. Prices array
+  let priceArray = [100, 200, 300];
+
+  let priceContainer = document.getElementById("priceContainer");
+  let totalAmountEl = document.getElementById("totalAmount");
+  let taxAmountEl = document.getElementById("taxAmount");
+  let discountAmountEl = document.getElementById("discountAmount");
+  let finalAmountEl = document.getElementById("finalAmount");
+
+  // 2. Calculate total using loop
+  let totalSum = 0;
+  for (let i = 0; i < priceArray.length; i++) {
+    totalSum += priceArray[i];
+
+    // 5. Display each price
+    let priceItem = document.createElement("p");
+    priceItem.textContent = "Price: " + priceArray[i];
+    priceContainer.appendChild(priceItem);
+  }
+
+  // 3. Apply tax & discount
+  let taxValue = totalSum * 0.10;        // 10% tax
+  let discountValue = totalSum * 0.05;  // 5% discount
+
+  let priceAfterTax = totalSum + taxValue;
+  let finalPriceValue = priceAfterTax - discountValue;
+
+  // 4. Display calculations
+  totalAmountEl.textContent = "Total = " + totalSum;
+  taxAmountEl.textContent = "Tax (10%) = " + taxValue;
+  discountAmountEl.textContent = "Discount (5%) = " + discountValue;
+  finalAmountEl.textContent = "Final Price = " + finalPriceValue;
+</script>
+
+</body>
+</html>
