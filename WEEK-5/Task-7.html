@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Task 7 - Email Format Validation</title>
+</head>
+
+<body>
+
+<form id="emailForm">
+
+<label>
+Email:
+<input type="email" id="emailInput" placeholder="example@gmail.com">
+</label>
+
+<br><br>
+
+<button type="submit">Submit</button>
+
+</form>
+
+<script>
+
+
+const form = document.getElementById("emailForm");
+
+
+form.addEventListener("submit", function(event) {
+
+    
+    let emailValue = document.getElementById("emailInput").value.trim();
+
+    
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // Validation
+    if (emailPattern.test(emailValue)) {
+
+        console.log("Success: Email format is valid");
+
+    } 
+    else {
+
+        console.log("Error: Invalid email format");
+        event.preventDefault();
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>

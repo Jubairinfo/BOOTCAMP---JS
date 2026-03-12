@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Task 8 - Password Length Validation</title>
+</head>
+
+<body>
+
+<form id="passwordForm">
+
+<label>
+Password:
+<input type="password" id="passwordInput" placeholder="Enter password">
+</label>
+
+<br><br>
+
+<button type="submit">Submit</button>
+
+</form>
+
+<script>
+
+
+const form = document.getElementById("passwordForm");
+
+
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+
+    
+    let passwordValue = document.getElementById("passwordInput").value.trim();
+
+    
+    if (passwordValue.length >= 8) {
+
+        console.log("Success: Password length is valid");
+
+    } 
+    else {
+
+        console.log("Error: Password must contain at least 8 characters");
+
+        // Prevent form submission
+        event.preventDefault();
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Task 4 - Function with Default Parameters</title>
+</head>
+<body>
+
+<script>
+
+
+function calculateDiscount(price, discount = 20) {
+    let finalPrice = price - (price * discount / 100);
+    return finalPrice;
+}
+
+
+
+let originalPrice = 1000;
+
+
+
+let priceWithCustomDiscount = calculateDiscount(originalPrice, 10);
+
+
+let priceWithDefaultDiscount = calculateDiscount(originalPrice);
+
+
+console.log("Discount Calculation Results:");
+
+console.log(`Price after 10% discount on ${originalPrice} is: ${priceWithCustomDiscount}`);
+
+console.log(`Price after default 20% discount on ${originalPrice} is: ${priceWithDefaultDiscount}`);
+
+</script>
+
+</body>
+</html>

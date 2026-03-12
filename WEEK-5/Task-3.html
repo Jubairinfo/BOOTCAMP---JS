@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Task 3 - Callback Function Implementation</title>
+</head>
+<body>
+
+<script>
+
+// Main
+function processNumber(number, callback) {
+    return callback(number);
+}
+
+
+
+function doubleNumber(num) {
+    return num * 2;
+}
+
+
+
+function halfNumber(num) {
+    return num / 2;
+}
+
+
+
+let value = 4;
+
+
+
+let doubledResult = processNumber(value, doubleNumber);
+let halfResult = processNumber(value, halfNumber);
+
+
+
+console.log("Callback Function Results:");
+
+console.log(`Double of ${value} is: ${doubledResult}`);
+console.log(`Half of ${value} is: ${halfResult}`);
+
+</script>
+
+</body>
+</html>

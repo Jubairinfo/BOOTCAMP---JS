@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Task 10 - Advanced Validation Utility</title>
+</head>
+
+<body>
+
+<form id="loginForm">
+
+<label>
+Email:
+<input type="email" id="emailInput" placeholder="example@gmail.com">
+</label>
+
+<br><br>
+
+<label>
+Password:
+<input type="password" id="passwordInput" placeholder="Enter password">
+</label>
+
+<br><br>
+
+<button type="submit">Submit</button>
+
+</form>
+
+<script>
+
+
+function isEmpty(value){
+    return value.trim() === "";
+}
+
+
+
+function isValidEmail(email){
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+}
+
+
+
+function isValidPassword(password){
+    return password.length >= 8;
+}
+
+
+
+function validateForm(event){
+       event.preventDefault();
+
+    let emailValue = document.getElementById("emailInput").value;
+    let passwordValue = document.getElementById("passwordInput").value;
+
+    
+    if(isEmpty(emailValue) || isEmpty(passwordValue)){
+        console.log("Validation Failed: Fields cannot be empty");
+        event.preventDefault();
+    }
+
+    else if(!isValidEmail(emailValue)){
+        console.log("Validation Failed: Invalid email format");
+        event.preventDefault();
+    }
+
+    else if(!isValidPassword(passwordValue)){
+        console.log("Validation Failed: Password must be at least 8 characters");
+        event.preventDefault();
+    }
+
+    else{
+        console.log("Form submitted successfully");
+    }
+
+}
+
+
+
+let form = document.getElementById("loginForm");
+form.addEventListener("submit", validateForm);
+
+</script>
+
+</body>
+</html>

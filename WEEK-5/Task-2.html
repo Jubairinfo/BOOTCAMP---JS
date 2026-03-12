@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Task 2 - Function Expressions and Arrow Functions</title>
+</head>
+<body>
+
+<script>
+
+const getStringLength = function(text) {
+    return text.length;
+};
+
+
+const getSquare = (num) => num * num;
+
+
+
+let message = "Welcome you all";
+let number = 2;
+
+
+
+let stringLength = getStringLength(message);
+let squareResult = getSquare(number);
+
+
+console.log("String Length Result:");
+console.log(`Length of "${message}" is: ${stringLength}`);
+
+console.log("Square Result:");
+console.log(`Square of ${number} is: ${squareResult}`);
+
+</script>
+
+</body>
+</html>
